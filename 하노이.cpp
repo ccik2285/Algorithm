@@ -3,11 +3,11 @@
 using namespace std;
 void back(int n,int start,int temp,int end){
     if(n==1){
-        cout << start << " " << end << endl;
+        cout << start << " " << end << '\n';
     }
     else{
         back(n-1,start,end,temp);
-        cout << start << " " << end << endl;
+        cout << start << " " << end << '\n';
         back(n-1,temp,start,end);
     }
 }
