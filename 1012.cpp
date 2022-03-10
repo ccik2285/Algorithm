@@ -14,7 +14,6 @@ void go_worms(int x, int y)
 			go_worms(x+dx[i], y+dy[i]);
 	}
 }
-
 int main()
 {
 
