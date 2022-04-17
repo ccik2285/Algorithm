@@ -27,13 +27,10 @@ int DP_Music(int index, int volume) {
 	return DP[index][volume];
 }
 
-void init() {
-	ios::sync_with_stdio(false);
-	cin.tie(0); cout.tie(0);
-}
 
 int main() {
-	init();
+    ios::sync_with_stdio(false);
+	cin.tie(0); cout.tie(0);
 	cin >> N >> S >> M;
 	for (int i = 0; i < N; i++)
 		cin >> arr[i];
