@@ -43,14 +43,3 @@ int main() {
     cout << solution(num);
 }
 
-
-
-
-
-
-
-
-
-
-
-

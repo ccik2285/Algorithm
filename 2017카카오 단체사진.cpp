@@ -1,41 +1,44 @@
-#include <iostream>
+#include <string>
 #include <vector>
 #include <algorithm>
+
 using namespace std;
-int solution(int n,vector<string> data) {
-    int answer =0;
-    vector<char> arr = {'A','C','F','J','M','N','R','T'};
-            do{
-                int flag;
-                for(auto s:data){
-                flag =0;
-                char a = s[0];
-                char b = s[2];
-                int gap = s[4]-'0';
-                int id1;
-                int id2;
-                int ca;
-               for(int j=0; j<arr.size(); j++){
-                   if(arr[j] == a) id1 = j;
-                   if(arr[j] == b) id2 = j;
-               }
-               ca = abs(id1-id2)-1;
-               if(s[3]== '='){
-                   if(ca==gap) flag=1;         
-               }
-               else if(s[3] == '>'){
-                   if(ca>gap) flag=1;
-               }
-               else if(s[3] == '<'){
-                   if(ca<gap) flag=1;
-               }           
-               if(!flag) break;
-            }
-            if(flag) answer++;
-            }while(next_permutation(arr.begin(),arr.end()));
-    return answer;
+
+int find_char(vector<char>& v, char c){
+    for(int i = 0; i < v.size(); i++)
+        if(c == v[i]) return i;
+    
+    return -1;
 }
-int main() {
-    vector<string> arr = {"N~F=0","R~T>2"};
-    cout << solution(2,arr);
+bool func1(int a, int b, int num){
+    return abs(a - b) == num ? true : false;
+}
+bool func2(int a, int b, int num){
+    return abs(a - b) < num ? true : false;
+}
+bool func3(int a, int b, int num){
+    return abs(a - b) > num ? true : false;
+}
+int solution(int n, vector<string> data) {
+    vector<char> v = {'A', 'C', 'F', 'J', 'M', 'N', 'R', 'T'};
+    int answer = 0;   
+    do {
+        bool flag = true;    
+        for(auto& s : data) {
+            int a = find_char(v, s[0]);
+            int b = find_char(v, s[2]);
+            int num = (s[4] - '0') + 1;
+
+            if(s[3] == '=') flag = func1(a, b, num);
+            else if(s[3] == '<') flag = func2(a, b, num);
+            else flag = func3(a, b, num);
+            
+            if(!flag) break;
+        }
+
+        if(flag) answer++;
+
+    } while (next_permutation(v.begin(), v.end()));
+
+    return answer;
 }

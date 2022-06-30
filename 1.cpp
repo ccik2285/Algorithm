@@ -42,3 +42,20 @@ int main() {
     cout << solution(3,4);
     cout << "hil";
 }
+
+
+[1,2] -> rsa -> 
+
+
+a
+b
+c
+d
+e
+ee
+f
+
+
+
+
+
